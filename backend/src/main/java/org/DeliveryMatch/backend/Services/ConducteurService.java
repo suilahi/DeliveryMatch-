@@ -32,8 +32,11 @@ public class ConducteurService {
     }
 
     public List<Annonce> getAnnoncesParConducteur(Long conducteurId) {
-        return annonceRepository.findByConducteurId(conducteurId);
+        List<Annonce> annonces = annonceRepository.findAllByConducteurId(conducteurId);
+        System.out.println("Nombre d'annonces trouvées : " + annonces.size());
+        return annonces;
     }
+
 
     public List<DemandeTransport> getDemandesParAnnonce(Long annonceId) {
         return demandeRepository.findByAnnonceId(annonceId);
@@ -58,11 +61,11 @@ public class ConducteurService {
     }
 
     public List<Annonce> getHistoriqueAnnonces(Long conducteurId) {
-        return annonceRepository.findByConducteurId(conducteurId); // filtrer côté frontend ou ajouter un champ "terminé"
+        return annonceRepository.findAllByConducteurId(conducteurId); // filtrer côté frontend ou ajouter un champ "terminé"
     }
 
     public List<Colis> getColisTransportesParConducteur(Long conducteurId) {
-        List<Annonce> annonces = annonceRepository.findByConducteurId(conducteurId);
+        List<Annonce> annonces = annonceRepository.findAllByConducteurId(conducteurId);
         return annonces.stream()
                 .flatMap(annonce -> annonce.getDemandes().stream())
                 .filter(demande -> demande.getStatut() == Statut.ACCEPTE || demande.getStatut() == Statut.ACCEPTE)

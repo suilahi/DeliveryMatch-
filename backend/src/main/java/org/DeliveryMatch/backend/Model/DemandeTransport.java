@@ -1,5 +1,6 @@
 package org.DeliveryMatch.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,47 +9,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DemandeTransport {
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Statut getStatut() {
-        return statut;
-    }
-
-    public void setStatut(Statut statut) {
-        this.statut = statut;
-    }
-
-    public Annonce getAnnonce() {
-        return annonce;
-    }
-
-    public void setAnnonce(Annonce annonce) {
-        this.annonce = annonce;
-    }
-
-    public Expediteur getExpediteur() {
-        return expediteur;
-    }
-
-    public void setExpediteur(Expediteur expediteur) {
-        this.expediteur = expediteur;
-    }
-
-    public Colis getColis() {
-        return colis;
-    }
-
-    public void setColis(Colis colis) {
-        this.colis = colis;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,6 +21,7 @@ public class DemandeTransport {
 
     @ManyToOne
     @JoinColumn(name = "annonce_id")
+    @JsonIgnoreProperties({"demandes", "hibernateLazyInitializer", "handler"})
     private Annonce annonce;
 
     @ManyToOne
@@ -67,4 +30,5 @@ public class DemandeTransport {
 
     @OneToOne(mappedBy = "demande", cascade = CascadeType.ALL)
     private Colis colis;
+
 }
