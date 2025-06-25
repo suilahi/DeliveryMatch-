@@ -1,0 +1,42 @@
+[33mcommit 82293729938541b7fafbbdaaec728e638beeed44[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Merge: 89bb4f0 3bd09e5
+Author: suilahi <suilahizakaria@gmail.com>
+Date:   Wed Jun 25 21:44:19 2025 +0100
+
+    Merge branch 'main' of https://github.com/suilahi/DeliveryMatch-
+
+[33mcommit 89bb4f0e20d38af1899f42d7cb2e18787483f4d9[m
+Author: suilahi <suilahizakaria@gmail.com>
+Date:   Wed Jun 25 21:37:06 2025 +0100
+
+    create fonctionnalite
+
+[33mcommit 3bd09e5ef8b2c5a3f758495bc6c91ee6a5281141[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: suilahi <suilahizakaria@gmail.com>
+Date:   Mon Jun 23 14:39:27 2025 +0100
+
+    terminer back and front
+
+[33mcommit dfe8936b018de1ef8c699179f63631731eb27502[m
+Author: suilahi <suilahizakaria@gmail.com>
+Date:   Mon Jun 23 14:38:39 2025 +0100
+
+    Initial empty commit
+
+[33mcommit 4d7174cdbd41f6cec7863dae36d7daa9c6805c0b[m
+Author: suilahi <suilahizakaria@gmail.com>
+Date:   Mon Jun 23 13:52:32 2025 +0100
+
+    create
+
+[33mcommit 9042316f340509f044d54241917d420c1a9b1963[m
+Author: suilahi <suilahizakaria@gmail.com>
+Date:   Mon Jun 23 13:51:19 2025 +0100
+
+    create
+
+[33mcommit e1ef9d92c577e183b6bd99bc65d490ce509b0f48[m
+Author: suilahi <suilahizakaria@gmail.com>
+Date:   Thu Jun 19 12:56:12 2025 +0100
+
+    terminer backend

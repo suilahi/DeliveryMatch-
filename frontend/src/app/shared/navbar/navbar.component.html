@@ -1,0 +1,14 @@
+<nav class="bg-blue-600 text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <a routerLink="/" class="text-xl font-bold tracking-tight">DeliveryMatch</a>
+
+    <div class="space-x-4">
+      <a routerLink="/home" class="hover:underline">Accueil</a>
+      <a routerLink="/conducteur" class="hover:underline">Conducteur</a>
+      <a routerLink="/expediteur" class="hover:underline">Expéditeur</a>
+      <a *ngIf="!isLogged()" routerLink="/login" class="hover:underline">Login</a>
+      <a *ngIf="!isLogged()" routerLink="/register" class="hover:underline">Register</a>
+      <button *ngIf="isLogged()" (click)="logout()" class="hover:underline">Déconnexion</button>
+    </div>
+  </div>
+</nav>

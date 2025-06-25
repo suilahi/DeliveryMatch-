@@ -1,0 +1,66 @@
+<div class="max-w-5xl mx-auto mt-10 p-6">
+  <h2 class="text-3xl font-bold text-blue-700 mb-4">Espace Expéditeur</h2>
+  <p class="text-gray-700 mb-6">Bienvenue sur votre espace expéditeur. Ici, vous pourrez gérer vos demandes et vos colis.</p>
+
+  <div *ngIf="loading" class="text-center text-gray-500 my-6">Chargement des annonces...</div>
+  <div *ngIf="error" class="text-center text-red-500 my-6">{{ error }}</div>
+
+  <div *ngIf="!loading && annonces.length > 0">
+    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Annonces disponibles</h3>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div *ngFor="let annonce of annonces" class="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+        <h4 class="text-lg font-bold text-blue-600 mb-2">Annonce #{{ annonce.id }}</h4>
+        <ul class="text-sm text-gray-700 space-y-1 mb-4">
+          <li><strong>Départ :</strong> {{ annonce.lieuDepart }}</li>
+          <li><strong>Destination :</strong> {{ annonce.destination }}</li>
+          <li><strong>Type :</strong> {{ annonce.typeMarchandise }}</li>
+          <li><strong>Capacité :</strong> {{ annonce.capaciteDisponible }} kg</li>
+          <li><strong>Dimensions max :</strong> {{ annonce.dimensionsMax }} cm³</li>
+        </ul>
+        <button class="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700" (click)="ouvrirFormulaire(annonce.id)">
+          Demander un transport
+        </button>
+
+        <div *ngIf="showFormAnnonceId === annonce.id" class="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-300">
+          <form [formGroup]="demandeForm" (ngSubmit)="envoyerDemande(annonce)">
+            <div class="grid grid-cols-1 gap-4">
+              <div>
+                <label class="block text-sm font-medium">Description du colis</label>
+                <input formControlName="description" class="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium">Poids (kg)</label>
+                <input type="number" formControlName="poids" class="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium">Longueur (cm)</label>
+                <input type="number" formControlName="longueur" class="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium">Largeur (cm)</label>
+                <input type="number" formControlName="largeur" class="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium">Hauteur (cm)</label>
+                <input type="number" formControlName="hauteur" class="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+              </div>
+            </div>
+
+            <div class="flex justify-end space-x-3 mt-4">
+              <button type="submit" [disabled]="demandeForm.invalid" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Envoyer</button>
+              <button type="button" (click)="annulerFormulaire()" class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500">Annuler</button>
+            </div>
+
+            <div *ngIf="demandeError" class="text-red-500 mt-2">{{ demandeError }}</div>
+            <div *ngIf="demandeSuccess" class="text-green-600 mt-2">{{ demandeSuccess }}</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && annonces.length === 0" class="text-center text-gray-500 my-6">
+    Aucune annonce disponible pour le moment.
+  </div>
+</div>

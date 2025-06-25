@@ -1,0 +1,48 @@
+<div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow mt-10">
+  <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Modifier une annonce</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label class="block font-medium">Lieu de départ</label>
+      <input formControlName="lieuDepart" class="w-full border rounded p-2" />
+    </div>
+
+    <div>
+      <label class="block font-medium">Destination</label>
+      <input formControlName="destination" class="w-full border rounded p-2" />
+    </div>
+
+    <div>
+      <label class="block font-medium">Étapes</label>
+      <input formControlName="etapes" class="w-full border rounded p-2" />
+    </div>
+
+    <div>
+      <label class="block font-medium">Type de marchandise</label>
+      <input formControlName="typeMarchandise" class="w-full border rounded p-2" />
+    </div>
+
+    <div>
+      <label class="block font-medium">Capacité disponible (kg)</label>
+      <input type="number" formControlName="capaciteDisponible" class="w-full border rounded p-2" />
+    </div>
+
+    <div>
+      <label class="block font-medium">Dimensions max (cm³)</label>
+      <input type="number" formControlName="dimensionsMax" class="w-full border rounded p-2" />
+    </div>
+
+    <div class="text-center mt-6 flex gap-2">
+      <button type="submit" [disabled]="form.invalid || loading"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold">
+        {{ loading ? 'Modification...' : 'Modifier l\'annonce' }}
+      </button>
+      <button routerLink="/conducteur" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        annuler
+      </button>
+    </div>
+
+    <div *ngIf="error" class="text-red-600 text-sm text-center mt-4">{{ error }}</div>
+    <div *ngIf="success" class="text-green-600 text-sm text-center mt-4">{{ success }}</div>
+  </form>
+</div>
